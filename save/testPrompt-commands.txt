@@ -1,0 +1,8 @@
+cout<< "Hello" <<endl;
+
+TH1F* h = new TH1F("h","h", 100,-5,5)
+h->FillRandom("gaus")
+new TCanvas
+h->Draw()
+h->Fit("gaus")
+gPad->SaveAs("testPrompt.png")
