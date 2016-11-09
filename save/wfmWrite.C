@@ -126,8 +126,8 @@ void wfmWrite(const char* dir, const char* name="Trace", const char* ext="txt", 
     // Time,Ampl
 
     std::string line;
-    getline(ifile_first,line);                          // skip the line LECROYWP725Zi,50011,Waveform
-    getline(ifile_first,line);                          // read the data line Segments,1,SegmentSize,8002 
+    std::getline(ifile_first,line);                     // skip the line LECROYWP725Zi,50011,Waveform
+    std::getline(ifile_first,line);                     // read the data line Segments,1,SegmentSize,8002 
     std::replace(line.begin(), line.end(), ',', ' ');   // replace all commas (if any) to spaces
     sscanf(line.c_str(), "Segments %*d SegmentSize %d", &npoints);
     ifile_first.close();
@@ -208,10 +208,10 @@ void wfmWrite(const char* dir, const char* name="Trace", const char* ext="txt", 
             // #1,07-Mar-2007 07:39:21,0                 
             // Time,Ampl
 
-            getline(ifile,line);    // skip the line LECROYWP725Zi,50011,Waveform
-            getline(ifile,line);    // skip the line Segments,1,SegmentSize,8002
-            getline(ifile,line);    // skip the line Segment,TrigTime,TimeSinceSegment1
-            getline(ifile,line);    // read the line #1,07-Mar-2007 07:39:21,0
+            std::getline(ifile,line);    // skip the line LECROYWP725Zi,50011,Waveform
+            std::getline(ifile,line);    // skip the line Segments,1,SegmentSize,8002
+            std::getline(ifile,line);    // skip the line Segment,TrigTime,TimeSinceSegment1
+            std::getline(ifile,line);    // read the line #1,07-Mar-2007 07:39:21,0
             if (ich == 0)                                           // use the time stamp from the first channel only
             {
                 std::replace(line.begin(), line.end(), ',', ' ');   // replace all commas (if any) to spaces
@@ -223,7 +223,7 @@ void wfmWrite(const char* dir, const char* name="Trace", const char* ext="txt", 
                 trigtime = mktime(&timeinfo);                       // time of the current event
                 if (ievent == evt1) trigtime_first = trigtime;      // time of the first event
             }
-            getline(ifile,line);    // skip the line Time,Ampl
+            std::getline(ifile,line);    // skip the line Time,Ampl
 
             //
             // read the data
@@ -232,7 +232,7 @@ void wfmWrite(const char* dir, const char* name="Trace", const char* ext="txt", 
             Int_t nlines = 0;
             for (int i=0; i<npoints; ++i)
             {
-                if (getline(ifile,line))                                // get line from the file
+                if (std::getline(ifile,line))                           // get line from the file
                 {
                     std::replace(line.begin(), line.end(), ',', ' ');   // replace all commas (if any) to spaces
                     std::istringstream ss(line);

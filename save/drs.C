@@ -173,7 +173,7 @@ TTree* drs(const char* ifname="sipm_25pe.xml", Int_t events=0)
             std::getline(ifile, line);
             std::getline(ifile, line);
 
-            while (getline(ifile,line) && line.find("<CHN") != std::string::npos)
+            while (std::getline(ifile,line) && line.find("<CHN") != std::string::npos)
             {
                // add oscilloscope channel
 

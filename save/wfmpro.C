@@ -1033,7 +1033,7 @@ void wfmRun(const char* ifname0, const char* ifname1, const char* ifname2, const
    std::string line;
    char comma;
 
-   for (int i=0; i<5; ++i) getline(ifile0,line);   // skip header
+   for (int i=0; i<5; ++i) std::getline(ifile0,line);   // skip header
    np0 = 0;
    while (ifile0 >> t0[np0] >> comma >> v0[np0]) {
       //if (np0 < 10) cout<< "   t0[" << np0 << "] = " << t0[np0] << " v0[" << np0 << "] = " << v0[np0] <<endl;
@@ -1043,7 +1043,7 @@ void wfmRun(const char* ifname0, const char* ifname1, const char* ifname2, const
    }
    //cout<< "np0 = " << np0 << " line = " << line <<endl;
 
-   for (int i=0; i<5; ++i) getline(ifile1,line);   // skip header
+   for (int i=0; i<5; ++i) std::getline(ifile1,line);   // skip header
    np1 = 0;
    while (ifile1 >> t1[np1] >> comma >> v1[np1]) {
       //if (np1 < 10) cout<< "   t1[" << np1 << "] = " << t1[np1] << " v1[" << np1 << "] = " << v1[np1] <<endl;
@@ -1053,7 +1053,7 @@ void wfmRun(const char* ifname0, const char* ifname1, const char* ifname2, const
    }
    //cout<< "np1 = " << np1 << " line = " << line <<endl;
 
-   for (int i=0; i<5; ++i) getline(ifile2,line);   // skip header
+   for (int i=0; i<5; ++i) std::getline(ifile2,line);   // skip header
    np2 = 0;
    while (ifile2 >> t2[np2] >> comma >> v2[np2]) {
       //if (np2 < 10) cout<< "   t2[" << np2 << "] = " << t2[np2] << " v2[" << np2 << "] = " << v2[np2] <<endl;
@@ -1063,7 +1063,7 @@ void wfmRun(const char* ifname0, const char* ifname1, const char* ifname2, const
    }
    //cout<< "np2 = " << np2 << " line = " << line <<endl;
 
-   for (int i=0; i<5; ++i) getline(ifile3,line);   // skip header
+   for (int i=0; i<5; ++i) std::getline(ifile3,line);   // skip header
    np3 = 0;
    while (ifile3 >> t3[np3] >> comma >> v3[np3]) {
       //if (np3 < 10) cout<< "   t3[" << np3 << "] = " << t3[np3] << " v3[" << np3 << "] = " << v3[np3] <<endl;

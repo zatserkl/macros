@@ -41,48 +41,48 @@ void multitek(const char* ifname, Float_t vscale=1., Float_t tscale=1.)
    std::string Horizontal, Offset;
    std::string FastFrame, Count, Frames;
 
-   // NB: getline(ifile,line) after ifile >> i will read LF
+   // NB: std::getline(ifile,line) after ifile >> i will read LF
 
    std::string line;
    std::istringstream ss;
 
-   getline(ifile,line); ss.str(line);
+   std::getline(ifile,line); ss.str(line);
    ss >> Record >> Length >> RecordLength >> Points >> t[np] >> v[np];
    t[np] *= tscale;
    v[np] *= vscale;
    ++np;
 
-   getline(ifile,line); ss.str(line);
+   std::getline(ifile,line); ss.str(line);
    ss >> Sample >> Interval >> SampleInterval >> s >> t[np] >> v[np];
    t[np] *= tscale;
    v[np] *= vscale;
    ++np;
 
-   getline(ifile,line); ss.str(line);
+   std::getline(ifile,line); ss.str(line);
    ss >> Trigger >> Point >> TriggerPoint >> Samples >> t[np] >> v[np];
    t[np] *= tscale;
    v[np] *= vscale;
    ++np;
 
-   getline(ifile,line); ss.str(line);
+   std::getline(ifile,line); ss.str(line);
    ss >> Trigger >> Time >> TriggerTime >> s >> t[np] >> v[np];
    t[np] *= tscale;
    v[np] *= vscale;
    ++np;
 
-   getline(ifile,line); ss.str(line);
+   std::getline(ifile,line); ss.str(line);
    ss >> quotes >> t[np] >> v[np];
    t[np] *= tscale;
    v[np] *= vscale;
    ++np;
 
-   getline(ifile,line); ss.str(line);
+   std::getline(ifile,line); ss.str(line);
    ss >> Horizontal >> Offset >> HorizontalOffset >> s >> t[np] >> v[np];
    t[np] *= tscale;
    v[np] *= vscale;
    ++np;
 
-   getline(ifile,line); ss.str(line);
+   std::getline(ifile,line); ss.str(line);
    if (line.find("\"FastFrame Count\"") != std::string::npos) {
       ss >> FastFrame >> Count >> FastFrameCount >> Frames >> t[np] >> v[np];
    }
