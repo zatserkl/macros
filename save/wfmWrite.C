@@ -255,7 +255,8 @@ void wfmWrite(const char* dir, const char* name="Trace", const char* ext="txt", 
 
     cout<< "Write " << tree->GetEntries() << " events into output file " << ofile->GetName() <<endl;
     int dt = trigtime - trigtime_first;
-    if (dt) cout<< "Event rate = " << tree->GetEntries() << " / " << dt << " = " << tree->GetEntries()/double(dt) << " Hz" <<endl;
+    if (dt <= 0) cout<< "***Warning: trigtime = " << trigtime << " trigtime_first = " << trigtime_first << " dt = " << dt <<endl;
+    if (dt != 0) cout<< "Event rate = " << tree->GetEntries() << " / " << dt << " = " << tree->GetEntries()/double(dt) << " Hz" <<endl;
     ofile->Write();
 
     tree->ResetBranchAddresses();
