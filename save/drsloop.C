@@ -19,7 +19,7 @@ using std::cout;     using std::endl;
 
 // utils.C stuff
 
-TGraph* gtemp(TCanvas* can=0);
+TGraph* gtemp(TCanvas* can=0, Bool_t updateNameTitle=kTRUE);
 Int_t countpads(TVirtualPad *pad);
 
 TGraph* gtemp(TCanvas* can, Int_t index)

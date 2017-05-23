@@ -272,6 +272,7 @@ void nostatover();
 void zoomx(Axis_t xmin=0, Axis_t xmax=0);             // zoom x-axis region
 void zoomy(Axis_t ymin=0, Axis_t ymax=0);
 void zoom(Axis_t xmin=0, Axis_t xmax=0, Axis_t ymin=0, Axis_t ymax=0);
+void zoomall(Axis_t xmin=0, Axis_t xmax=0, Axis_t ymin=0, Axis_t ymax=0);
 void unzoom();                                        // same as unzoomx()
 void unzoomx();
 void unzoomy();
@@ -751,6 +752,17 @@ void zoom(Axis_t xmin, Axis_t xmax, Axis_t ymin, Axis_t ymax) {
         gPad->Modified();
         gPad->Update();
     }
+}
+
+void zoomall(Axis_t xmin, Axis_t xmax, Axis_t ymin, Axis_t ymax)
+{
+    TPad* pad = gpad(0, false);
+    Int_t npads = countpads(gPad);
+    for (int ipad=0; ipad<npads; ++ipad) {
+	pad->cd(ipad+1);
+	zoom(xmin, xmax, ymin, ymax);
+    }
+    pad->cd();
 }
 
 void unzoom() {                                 // same as unzoomx()
