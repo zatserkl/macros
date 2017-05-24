@@ -32,8 +32,6 @@ void FastFitMerge(Double_t *pb, Double_t *pc, Double_t *pa)
     cout<< "pc[0] = " << pc[0] << " pc[1] = " << pc[1] <<endl;
     cout<< "pa[0] = " << pa[0] << " pa[1] = " << pa[1] <<endl;
     cout<<endl;
-
-    // TODO: free memory
 }
 
 void FastFitSplitMerge(Int_t na, Double_t xa[], Double_t ya[], Double_t *pa)
@@ -77,16 +75,16 @@ void FastFitSplitMerge(Int_t na, Double_t xa[], Double_t ya[], Double_t *pa)
     ///     yc[i] = ya[nb+i];
     /// }
 
-    for (int i=0, nb = nc = 0; i<na; ++i) {
-        if (i % 2 == 0) {
-            xb[nb] = xa[i];
-            yb[nb] = ya[i];
-            nb++;
+    for (int ia=0, ib=0, ic=0; ia<na; ++ia) {
+        if (ia % 2 == 0) {
+            xb[ib] = xa[ia];
+            yb[ib] = ya[ia];
+            ib++;
         }
         else {
-            xc[nc] = xa[i];
-            yc[nc] = ya[i];
-            nc++;
+            xc[ic] = xa[ia];
+            yc[ic] = ya[ia];
+            ic++;
         }
     }
 
