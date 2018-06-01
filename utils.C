@@ -39,6 +39,58 @@
 
 using std::cout;                using std::endl;
 
+// https://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format
+#define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
+#define BYTE_TO_BINARY(byte)  \
+  (byte & 0x80 ? '1' : '0'), \
+  (byte & 0x40 ? '1' : '0'), \
+  (byte & 0x20 ? '1' : '0'), \
+  (byte & 0x10 ? '1' : '0'), \
+  (byte & 0x08 ? '1' : '0'), \
+  (byte & 0x04 ? '1' : '0'), \
+  (byte & 0x02 ? '1' : '0'), \
+  (byte & 0x01 ? '1' : '0')
+
+void bprintf(unsigned int n, char buf[])
+{
+    if (n > 1) {
+        bprintf(n/2, buf);
+    }
+
+    // you are here after recursive calls
+    sprintf(&buf[strlen(buf)], "%u", n%2);
+}
+
+void bin_printf(unsigned int n)
+{
+    for (int i=31; i>0; --i) {
+        int r = i % 10;
+        if (r != 0) printf("%u", r);    // print byte number (ones only)
+        else printf(" ");
+    }
+    printf("%u\n", 0);                  // print 0 and insert newline
+
+    char buf[33];
+    buf[0] = '\0';
+    bprintf(n, buf);
+    printf("%32s\n", buf);
+}
+
+void byte_printf(unsigned int n)
+{
+    for (int i=7; i>0; --i) {
+        int r = i % 10;
+        if (r != 0) printf("%u", r);    // print byte number (ones only)
+        else printf(" ");
+    }
+    printf("%u\n", 0);                  // print 0 and insert newline
+
+    char buf[9];
+    buf[0] = '\0';
+    bprintf(n, buf);
+    printf("%8s\n", buf);
+}
+
 /* 
    to use utils.C function in the root macro declare them like
    TH1* htemp(TCanvas* can=0);

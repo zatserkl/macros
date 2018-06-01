@@ -1524,15 +1524,18 @@ void channel23_run(const char* ifname, Int_t event1=0, Int_t event2=-1, bool deb
     Double_t thres[4];
     //---------------------------------------thres[0] = 0.060;    // mV
     thres[0] = 0.020;    // mV
+    //-- thres[0] = 0.003;    // mV          // <-- for single pe peak
     //-- thres[0] = 0.010;    // mV
     //-- thres[0] = 0.100;    // mV
-    //-- thres[1] = 0.003;    // mV
-    thres[1] = 0.020;    // mV
+    thres[1] = 0.003;    // mV          // <-- for single pe peak
+    //-- thres[1] = 0.020;    // mV
 
     // trigger time point == starting point
     Double_t trig[4];
     trig[0] = -5.;    // ns
     trig[1] = -5.;     // ns
+    //-- trig[0] = -100.;    // ns
+    //-- trig[1] = -100.;     // ns
 
     // cutoff frequency
     Double_t cutoff_GHz[4];
@@ -1545,11 +1548,16 @@ void channel23_run(const char* ifname, Int_t event1=0, Int_t event2=-1, bool deb
     //-- cutoff_GHz[0] = 1.500;
     //-- cutoff_GHz[1] = 0.750;
 
-    //-- cutoff_GHz[0] = 0.750;
-    cutoff_GHz[0] = 10.;
     //-- cutoff_GHz[1] = 0.350;
-    //-- cutoff_GHz[1] = 0.750;
+
+    //-- cutoff_GHz[0] = 1.0;
+    //-- cutoff_GHz[1] = 1.0;
+    cutoff_GHz[0] = 10.;
     cutoff_GHz[1] = 10.;
+    // cutoff_GHz[0] = 0.750;
+    // cutoff_GHz[1] = 0.750;
+    //-- cutoff_GHz[0] = 0.500;
+    //-- cutoff_GHz[1] = 0.500;
 
     // fit range
     Double_t yfit1[4];

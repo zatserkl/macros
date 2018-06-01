@@ -1,6 +1,6 @@
 // zatserkl@fnal.gov
 
-// NB: the interpetor fails to execute this macro
+// NB: the interpetor fails to execute this macro -- works with ROOT 6.10/08
 
 /*
    --> to compile with MathMore

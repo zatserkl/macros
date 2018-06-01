@@ -1,5 +1,5 @@
 // Create a TTree for DRSOsc v.5.0.3 for the evaluation board v4 (saves in tree just one time array for all channels).
-// Andriy Zatserklyaniy zatserkl@fnal.gov
+// Andriy Zatserklyaniy <zatserkl@gmail.com>
 // AZ: Nov 1, 2014: fixed channel time array
 
 #include <TFile.h>

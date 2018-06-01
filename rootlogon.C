@@ -17,7 +17,8 @@ void rootlogon()
 
 
    // gSystem->SetIncludePath("-I$HOME/macros -I.");
-   gROOT->LoadMacro("utils.C+");
+   // gROOT->LoadMacro("utils.C+");
+   gROOT->LoadMacro("utils.C");     // do not compile in ROOT 6.13/02
    
    // gStyle->SetCanvasPreferGL(kTRUE);   // anti-aliasing with OpenGL -- does not work now?!
 
