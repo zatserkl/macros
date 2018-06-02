@@ -61,7 +61,15 @@ void bprintf(unsigned int n, char buf[])
     sprintf(&buf[strlen(buf)], "%u", n%2);
 }
 
-void bin_printf(unsigned int n)
+/*
+// byte_printf('A')
+76543210
+ 1000001
+// byte_printf('a')
+76543210
+ 1100001
+*/
+void int_printf(unsigned int n)
 {
     for (int i=31; i>0; --i) {
         int r = i % 10;
