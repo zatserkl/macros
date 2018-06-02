@@ -69,23 +69,20 @@ void bprintf(unsigned int n, char buf[])
 76543210
  1100001
 */
-void printf_int(unsigned int n)
-{
-    for (int i=31; i>0; --i) {
-        int r = i % 10;
-        if (r != 0) printf("%u", r);    // print byte number (ones only)
-        else printf(" ");
-    }
-    printf("%u\n", 0);                  // print 0 and insert newline
 
-    char buf[33];
-    buf[0] = '\0';
-    bprintf(n, buf);
-    printf("%32s\n", buf);
+void bprintf(unsigned int n, char buf[]) // before the call set buf[0] = '\0'
+{
+    if (n > 1) {
+        bprintf(n/2, buf);
+    }
+
+    // you are here after recursive calls
+    sprintf(&buf[strlen(buf)], "%u", n%2);
 }
 
 void printf_byte(unsigned int n)
 {
+    // print string 76543210
     for (int i=7; i>0; --i) {
         int r = i % 10;
         if (r != 0) printf("%u", r);    // print byte number (ones only)
@@ -97,6 +94,22 @@ void printf_byte(unsigned int n)
     buf[0] = '\0';
     bprintf(n, buf);
     printf("%8s\n", buf);
+}
+
+void printf_int(unsigned int n)
+{
+    // print string 1 987654321 987654321 9876543210
+    for (int i=31; i>0; --i) {
+        int r = i % 10;
+        if (r != 0) printf("%u", r);    // print byte number (ones only)
+        else printf(" ");
+    }
+    printf("%u\n", 0);                  // print 0 and insert newline
+
+    char buf[33];
+    buf[0] = '\0';
+    bprintf(n, buf);
+    printf("%32s\n", buf);
 }
 
 /* 
