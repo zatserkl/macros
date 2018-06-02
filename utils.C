@@ -62,14 +62,14 @@ void bprintf(unsigned int n, char buf[])
 }
 
 /*
-// byte_printf('A')
+// printf_byte('A')
 76543210
  1000001
-// byte_printf('a')
+// printf_byte('a')
 76543210
  1100001
 */
-void int_printf(unsigned int n)
+void printf_int(unsigned int n)
 {
     for (int i=31; i>0; --i) {
         int r = i % 10;
@@ -84,7 +84,7 @@ void int_printf(unsigned int n)
     printf("%32s\n", buf);
 }
 
-void byte_printf(unsigned int n)
+void printf_byte(unsigned int n)
 {
     for (int i=7; i>0; --i) {
         int r = i % 10;
