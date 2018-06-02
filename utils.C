@@ -51,16 +51,6 @@ using std::cout;                using std::endl;
   (byte & 0x02 ? '1' : '0'), \
   (byte & 0x01 ? '1' : '0')
 
-void bprintf(unsigned int n, char buf[])
-{
-    if (n > 1) {
-        bprintf(n/2, buf);
-    }
-
-    // you are here after recursive calls
-    sprintf(&buf[strlen(buf)], "%u", n%2);
-}
-
 /*
 // printf_byte('A')
 76543210
