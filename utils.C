@@ -43,12 +43,12 @@ using std::cout;                using std::endl;
 /* Bit Masking */
 /* Bit masking can be used to switch a character
    between lowercase and uppercase */
-// NB: mistake on the webpage code for CLR_FLAG: - (minus) instead of ~ (tilda)
+// NB: bug in the webpage code for CLR_FLAG: - (minus) instead of ~ (tilda)
 #define BIT_POS(N)            ( 1U << (N) )
 #define SET_FLAG(N, F)        ( (N) |= (F) )
 #define CLR_FLAG(N, F)        ( (N) &= ~(F) )
 #define TST_FLAG(N, F)        ( (N) & (F) )
-#define BIT_RANGE(N, M)       ( BIT_POS((M)+1 - (N))-1 << (N) )
+#define BIT_RANGE(N, M)       ( BIT_POS((M) - (N) + 1) - 1 << (N) )
 #define BIT_SHIFTL(B, N)      ( (unsigned)(B) << (N) )
 #define BIT_SHIFTR(B, N)      ( (unsigned)(B) >> (N) )
 #define SET_MFLAG(N, F, V)    ( CLR_FLAG(N, F), SET_FLAG(N, V) )
