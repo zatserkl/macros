@@ -39,6 +39,43 @@
 
 using std::cout;                using std::endl;
 
+// https://www.indiabix.com/technical/c/bits-and-bytes/
+/* Bit Masking */
+/* Bit masking can be used to switch a character
+   between lowercase and uppercase */
+// NB: mistake on the webpage code for CLR_FLAG: - (minus) instead of ~ (tilda)
+#define BIT_POS(N)            ( 1U << (N) )
+#define SET_FLAG(N, F)        ( (N) |= (F) )
+#define CLR_FLAG(N, F)        ( (N) &= ~(F) )
+#define TST_FLAG(N, F)        ( (N) & (F) )
+#define BIT_RANGE(N, M)       ( BIT_POS((M)+1 - (N))-1 << (N) )
+#define BIT_SHIFTL(B, N)      ( (unsigned)(B) << (N) )
+#define BIT_SHIFTR(B, N)      ( (unsigned)(B) >> (N) )
+#define SET_MFLAG(N, F, V)    ( CLR_FLAG(N, F), SET_FLAG(N, V) )
+#define CLR_MFLAG(N, F)       ( (N) &= ~(F) )
+#define GET_MFLAG(N, F)       ( (N) & (F) )
+
+// #include <stdio.h>
+// void main()
+// {
+//   unsigned char ascii_char = 'A';        /*  char = 8 bits only */
+//   int test_nbr = 10;
+//   printf("Starting character = %c\n", ascii_char);
+//   /*  The 5th bit position determines if the character is
+//       uppercase or lowercase.
+//       5th bit = 0  - Uppercase
+//       5th bit = 1  - Lowercase      */
+//   printf("\nTurn 5th bit on = %c\n", SET_FLAG(ascii_char, BIT_POS(5)) );
+//   printf("Turn 5th bit off = %c\n\n", CLR_FLAG(ascii_char, BIT_POS(5)) );
+//   printf("Look at shifting bits\n");
+//   printf("=====================\n");
+//   printf("Current value = %d\n", test_nbr);
+//   printf("Shifting one position left = %d\n",
+//          test_nbr = BIT_SHIFTL(test_nbr, 1) );
+//   printf("Shifting two positions right = %d\n",
+//          BIT_SHIFTR(test_nbr, 2) );
+// }
+
 // https://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format
 #define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
 #define BYTE_TO_BINARY(byte)  \
@@ -80,7 +117,8 @@ void printf_byte(unsigned int n)
     }
     printf("%u\n", 0);                  // print 0 and insert newline
 
-    char buf[9];
+    // char buf[9];
+    char buf[33];
     buf[0] = '\0';
     bprintf(n, buf);
     printf("%8s\n", buf);
